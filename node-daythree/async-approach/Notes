@@ -1,0 +1,16 @@
+Asynchronous Approach:
+
+1. Callback
+2. Promise
+
+ axios.get('request-url')
+ .then() // Promise is Resolved.
+ .catch() // Promise is Rejected
+
+3. Async/Await
+
+async/await is an alternative syntax of working with promises.
+
+async function() {
+    await [Async Code]
+}
