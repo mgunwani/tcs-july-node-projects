@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <a href="/products/create">Add New Product</a>
+    <h2>
+        Product List
+    </h2>
+    <table border="1" cellpadding="10" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Product Id</th>
+                <th>Product Name</th>
+                <th>Product Price</th>
+                <th>Product Quantity</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(var i=0;i<productList.length;i++) { %>
+                <tr>
+                    <td>
+                        <%= productList[i]._id %>
+                    </td>
+                    <td>
+                        <%= productList[i].name %>
+                    </td>
+                    <td>
+                        <%= productList[i].price %>
+                    </td>
+                    <td>
+                        <%= productList[i].quantity %>
+                    </td>
+                    <td>
+                        <a href="/products/<%= productList[i]._id %>">View Details</a>
+                    </td>
+                </tr>
+                <% } %>
+        </tbody>
+    </table>
+</body>
+
+</html>
