@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar.ejs') %>
+
+        <br /><br />
+
+        <div class="container">
+
+
+            <a href="/products/create" class="btn btn-secondary">Add New Product</a>
+            <br /><br />
+            <h2>
+                Product List
+            </h2>
+            <br />
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Product Id</th>
+                        <th>Product Name</th>
+                        <th>Product Price</th>
+                        <th>Product Quantity</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0;i<productList.length;i++) { %>
+                        <tr>
+                            <td>
+                                <%= productList[i]._id %>
+                            </td>
+                            <td>
+                                <%= productList[i].name %>
+                            </td>
+                            <td>
+                                <%= productList[i].price %>
+                            </td>
+                            <td>
+                                <%= productList[i].quantity %>
+                            </td>
+                            <td>
+                                <a href="/products/<%= productList[i]._id %>" class="btn btn-secondary">View Details</a>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+
+        </div>
+</body>
+
+</html>

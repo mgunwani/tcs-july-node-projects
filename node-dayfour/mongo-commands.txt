@@ -1,0 +1,175 @@
+
+Mongodb: A document-based No-SQL Database
+
+Non-Structured Database
+
+------------------------------------------------------
+
+Database: Server and Client
+
+-- To check mongodb version:
+
+	mongo --version
+	
+-- To start mongo server
+
+	mongod
+	
+	Default Port: 27017
+	Default Database Path: c:/data/db
+
+-- To connect mongo client with already started server:
+
+	mongo
+	
+---------------------------------------------------------
+
+-- To show the list of databases:
+
+	show dbs
+	
+-- To create new database or to use existing database:
+
+	use tcsdb
+	
+-- To see the currently used database
+
+	db
+	
+-- To create a new collection
+
+	db.createCollection('users')
+	db.createCollection('employees')
+	
+-- To see the list of collections in database
+
+	show collections
+	
+-- To store documents into `users` collection:
+
+	db.users.insert({ "name": "Kartik", "age": 23 })
+	db.users.insert({ "name": "Shreya", "age": 22 })
+	db.users.insert({ "name": "Roger", "age": 40 })
+	db.users.insert({ "name": "Richard", "age": 33 })
+	db.users.insert({ "name": "Kim", "age": 45 })
+	
+-- 	To see the list of documents in `users` collection:
+
+	db.users.find();
+	db.users.find().pretty();
+
+-- To retrieve documents based upon conditions:
+
+	db.users.find({"name": "Kim"});
+	
+	db.users.find({"age": 33})
+
+-- To retrieve documents based upon comparisons:
+
+	db.users.find({"age": 33})
+	
+	db.users.find({"age": { $eq: 33 } })
+	db.users.find({"age": { $ne: 33 } })
+	
+	db.users.find({"age": { $gt: 33 } })
+	db.users.find({"age": { $gte: 33 } })
+	
+	db.users.find({"age": { $lt: 33 } })
+	db.users.find({"age": { $lte: 33 } })
+
+	db.users.find({"age": { $in: [23, 33] } })
+	db.users.find({"age": { $nin: [23, 33] } })
+
+-- Logical Operators:
+
+	$and: all conditions in the array must be satisfied.
+
+	db.users.find({ $and: 
+		[{"name": "Kartik"}, {"age": 33}]
+	});
+
+	$or: any one or both must be satisfied
+
+	db.users.find({ $or: 
+		[{"name": "Kartik"}, {"age": 33}]
+	});
+	
+	$not: opposite of any condition
+	
+	db.users.find({"age": { $not: { $gt: 33 } } })
+
+-- Limit the documents:
+
+	db.users.find().limit(2)
+	
+-- Skip the documents:
+
+	db.users.find().skip(2);
+	
+Query: db.users.find().limit(2).skip(2);
+
+-- Projection:
+
+	db.collectio-nname.find({selection},{projection})
+
+	selection: limit the rows
+	projection: limit the columns
+	
+	db.users.find({},{"name": 1})
+	db.users.find({},{"age": 1})
+	db.users.find({"name": "Kartik"},{"age": 1, "_id": 0})
+	
+	db.users.findOne({},{"age": 1, "_id": 0})
+	db.users.find({},{"age": 1, "_id": 0}).limit(1)
+	
+-------------------------------------------------------
+
+Update Documents:
+
+	db.users.update(
+		{ "name": "Kartik" },
+		{ $set: { "age": 45 }}
+	);
+
+	db.users.update(
+		{ "name": "Kartik" },
+		{ $set: { "age": 45, "status": "passive" }}
+	);
+	
+	db.users.updateOne(
+		{ "age": { $gte: 40 } },
+		{ $set: { "status": "passive" }}
+	);
+	
+	db.users.updateMany(
+		{ "age": { $gte: 40 } },
+		{ $set: { "status": "passive" }}
+	);
+
+---------------------------------------
+
+	db.users.deleteOne({status: "passive"});
+	
+	db.users.deleteMany({status: "passive"});
+
+	db.users.deleteMany({});	// Delete All Documents
+
+---------------------------------------
+
+-- Remove Attribute or Field from collection:
+
+	db.users.updateMany(
+		{},
+		{$unset : { age: '' }}
+	)
+	
+----------------------------------------
+
+	db.users.find({ {}, $orderBy: {"age":1} });
+	
+	db.users.find().sort({"name":-1}) // Decending
+	db.users.find().sort({"name":1})  // Ascending
+	
+-----------------------------------------
+
+

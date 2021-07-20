@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body>
+
+    <%- include('../partials/navbar.ejs') %>
+        <br /><br />
+
+        <div class="container">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3>Product Detail</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table">
+                        <tbody>
+                            <tr>
+                                <th>Product Id</th>
+                                <td>
+                                    <%= product._id %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Product Name</th>
+                                <td>
+                                    <%= product.name %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Product Price</th>
+                                <td>
+                                    <%= product.price %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Product Quantity</th>
+                                <td>
+                                    <%= product.quantity %>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th>Product Updated Last at </th>
+                                <td>
+                                    <%= product.updated_at %>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="card-footer">
+                    <form action="/products/delete/<%= product._id %>" method="POST">
+                        <a href="/products" class="btn btn-secondary">Go Back</a>
+                        <a href="/products/update/<%= product._id %>" class="btn btn-secondary">Update</a>
+                        <button type="submit" class="btn btn-secondary">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+</body>
+
+</html>

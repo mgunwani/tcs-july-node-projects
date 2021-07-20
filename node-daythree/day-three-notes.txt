@@ -1,0 +1,71 @@
+
+Angular: Client Side JavaScript Framework
+
+NodeJS: Server Side JavaScript Framework
+
+	- NodeJS provides runtime environment to JavaScript.
+	- NodeJS works in asynchronous approach (non-blocking approach).
+	- NodeJS helps in communicating with File System, Network, Database, API etc.
+	- NodeJS has very strong modules integration that helps in backend activities.
+	
+package.json
+
+	- This file contains all the meta information about your project along with list of depedencies that you use in your project.
+	
+	npm init
+	npm init --yes
+	
+	npm start (checks the start script in package.json)
+	npm run start
+	npm run something
+	
+------------------------------------------------------------
+
+Node Modules:
+
+	1. Core Modules (Built-In Modules)
+	2. Local Modules (User Defined Modules)
+	3. Third-Party Modules (Modules installed with NPM)
+	
+------------------------------------------------------------
+
+fs module: File System Module
+
+	1. fs module is one of core module.
+	2. Helps in communicating with File System.
+	
+------------------------------------------------------------
+
+Asynchronous and Synchronous Approach
+
+Synchronous: happens at the same time.
+Asynchronous: doesn't happens at the same time.
+
+With Synchronous, response is immediate or until it is ready.
+With Asynchronous, response as ready. (Partial response is expected)
+
+Synchronous is also known as Blocking Approach.
+Asynchronous is also known as Non-Blocking Approach.
+
+In Node, the approach is asynchronous or non-blocking by default.
+
+------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	
+

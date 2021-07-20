@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <%- include('../partials/head.ejs') %>
+</head>
+
+<body>
+    <%- include('../partials/navbar.ejs') %>
+        <br /><br />
+        <div class="container">
+            <h3>Update New Product</h3>
+            <br />
+            <form action="/products/edit/<%= product.id %>" method="POST">
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="name" placeholder="Product Name"
+                        value="<%= product.name %>">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="price" placeholder="Product Price"
+                        value="<%= product.price %>">
+                </div>
+
+                <div class="mb-3">
+                    <input type="text" class="form-control" name="quantity" placeholder="Product Quantity"
+                        value="<%= product.quantity %>">
+                </div>
+
+                <div class="mb-3">
+                    <input type="submit" value="Update" class="btn btn-secondary" />
+                    <input type="reset" value="Clear" class="btn btn-secondary" />
+                </div>
+            </form>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+
+Node + Express + Mongodb
+
+Creating Rest APIs:
+
+	npm install express-generator --global
+
+Template Engine: EJS
+
+	express node-express-mongodb-ejs-project --view=ejs
+	cd node-express-mongodb-ejs-project
+	npm install
+	npm start
+	
+---------------------------------------------------
+
+	mongodb vs. mongoose
+	
+	mongodb connects with database.
+	
+	mongoose is ORM for mongodb that helps in creating the Schema based on the configuration.
+	
+---------------------------------------------------
