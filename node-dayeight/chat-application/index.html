@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
+    <script>
+        var socket = io();
+        function setUsername() {
+            socket.emit('setUsername', document.getElementById('name').value);
+        }
+        var user;
+        socket.on('userSet', function (data) {
+            user = data.username;
+            document.body.innerHTML = `<input type = "text" id = "message">
+         <button type = "button" name = "button" onclick = "sendMessage()">Send</button>
+         <div id = "message-container"></div>`
+        })
+        function sendMessage() {
+            var msg = document.getElementById('message').value;
+            if (msg) {
+                socket.emit('msg', { message: msg, user: user });
+            }
+        }
+        socket.on('newmsg', function (data) {
+            document.getElementById('message-container').innerHTML += `
+            <div><b>${data.user}</b>: ${data.message}</div>`;
+        })
+    </script>
+
+    <input type="text" name="name" id="name" placeholder="Enter Your Name!">
+    <button type="button" name="button" onclick="setUsername()">Let me Chat!</button>
+
+</body>
+
+</html>
